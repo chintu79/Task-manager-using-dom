@@ -472,8 +472,8 @@ main {
 }
 
 .bubble {
-    background: rgba(55, 138, 221, 0.2);
-    color: var(--accent-hover);
+    background: rgba(245, 158, 11, 0.08);
+    color: #f59e0b;
 }
 
 .logs {
