@@ -521,3 +521,68 @@ main {
     border-left: 4px solid #f59e0b;
     background: rgba(245, 158, 11, 0.08);
 }
+
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.comparison-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+}
+
+.comparison-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.comparison-card ul {
+    padding-left: 1rem;
+    color: var(--text-secondary);
+}
+
+.comparison-card li {
+    margin-bottom: 0.5rem;
+}
+
+.attribute-demo {
+    margin-top: 1.5rem;
+}
+
+.attribute-demo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.attribute-demo input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.attribute-demo input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.result-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    white-space: pre-line;
+    line-height: 1.7;
+}

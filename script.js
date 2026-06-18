@@ -19,6 +19,12 @@ const button = document.getElementById("demoBtn");
 const logContainer = document.getElementById("logContainer");
 const clearLogs = document.getElementById("clearLogs");
 
+//Attribute vs property elements
+const input = document.getElementById("nameInput");
+const checkBtn = document.getElementById("checkValuesBtn");
+const changeBtn = document.getElementById("changePropertyBtn");
+const resultBox = document.getElementById("attributeResult");
+
 //Theme toggling logic
 themeToggle.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
@@ -213,4 +219,36 @@ clearLogs.addEventListener("click", () => {
       Click the button to see event propagation...
     </div>
   `;
+});
+
+//Attribute vs property
+
+checkBtn.addEventListener("click", () => {
+    const attributeValue = input.getAttribute("value");
+    const propertyValue = input.value;
+
+    resultBox.textContent = `
+Attribute Value: ${attributeValue}
+
+Property Value: ${propertyValue}
+
+Observation:
+Attribute stores the original HTML value.
+Property stores the current value.
+    `;
+});
+
+changeBtn.addEventListener("click", () => {
+    input.value = "Changed via JS Property";
+
+    resultBox.textContent = `
+Property Updated!
+
+Attribute Value: ${input.getAttribute("value")}
+Property Value: ${input.value}
+
+Notice:
+The property changed,
+but the HTML attribute remained the same.
+    `;
 });

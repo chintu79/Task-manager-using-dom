@@ -122,6 +122,57 @@
         </div>
     </section>
 
+    <section class="section">
+        <div class="section-header">
+            <h2>HTML Attributes vs DOM Properties</h2>
+            <p>
+                Attributes belong to the HTML markup, while properties belong to the DOM object created by the browser.
+            </p>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h3>HTML Attribute</h3>
+                <ul>
+                    <li>Defined in HTML</li>
+                    <li>Retrieved using <code>getAttribute()</code></li>
+                    <li>Represents initial value</li>
+                    <li>Stored in markup</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h3>DOM Property</h3>
+                <ul>
+                    <li>Part of DOM object</li>
+                    <li>Accessed using dot notation</li>
+                    <li>Represents current value</li>
+                    <li>Can change dynamically</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="attribute-demo">
+            <label for="nameInput">Input Element</label>
+
+            <input type="text" id="nameInput" value="Krishna" />
+
+            <div class="controls">
+                <button id="checkValuesBtn">
+                    Check Attribute & Property
+                </button>
+
+                <button id="changePropertyBtn">
+                    Change Property
+                </button>
+            </div>
+
+            <div class="result-box" id="attributeResult">
+                Click a button to inspect the input.
+            </div>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 
