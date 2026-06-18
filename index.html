@@ -41,6 +41,87 @@
         </form>
     </section>
 
+
+    <!-- add event propagation demonstration -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Browser Rendering Pipeline</h2>
+            <p>How the browser converts HTML & CSS into pixels on the screen.</p>
+        </div>
+
+        <div class="pipeline">
+            <div class="step">HTML</div>
+            <div class="arrow">→</div>
+
+            <div class="step">Parsing</div>
+            <div class="arrow">→</div>
+
+            <div class="step">Tokenization</div>
+            <div class="arrow">→</div>
+
+            <div class="step">DOM Tree</div>
+            <div class="arrow">→</div>
+
+            <div class="step">CSSOM</div>
+            <div class="arrow">→</div>
+
+            <div class="step">Render Tree</div>
+            <div class="arrow">→</div>
+
+            <div class="step">Layout</div>
+            <div class="arrow">→</div>
+
+            <div class="step">Paint</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <h2>Event Propagation Demo</h2>
+            <p>
+                Click the button and observe how events travel during
+                <strong>Capturing → Target → Bubbling</strong>.
+            </p>
+        </div>
+
+        <div class="controls">
+            <button id="clearLogs">Clear Logs</button>
+        </div>
+
+        <div class="propagation-container" id="grandparent">
+            Grandparent
+
+            <div class="propagation-box parent" id="parent">
+                Parent
+
+                <div class="propagation-box child" id="child">
+                    Child
+
+                    <button id="demoBtn" class="demo-btn">
+                        Click Me
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <span class="capture">Capture Phase</span>
+            <span class="bubble">Bubble Phase</span>
+        </div>
+
+        <div class="logs">
+            <div class="logs-header">
+                Event Logs
+            </div>
+
+            <div id="logContainer" class="log-container">
+                <div class="placeholder">
+                    Click the button to see event propagation...
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 

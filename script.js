@@ -1,14 +1,25 @@
+//task manager elements
 const addBtn = document.querySelector('#add-task-btn');
 const taskFormSection = document.querySelector('.task-form-section');
 const closeFormBtn = document.querySelector('#close-form');
 const form = document.querySelector('#task-form');
 const taskListContainer = document.querySelector('#task-list');
 
+//Theme toggle elements
 const themeToggle = document.querySelector('#theme-toggle');
 const savedTheme = localStorage.getItem('theme') || 'light';
 document.documentElement.setAttribute('data-theme', savedTheme);
 themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 
+// event propagation and browser rendering elements
+const grandparent = document.getElementById("grandparent");
+const parent = document.getElementById("parent");
+const child = document.getElementById("child");
+const button = document.getElementById("demoBtn");
+const logContainer = document.getElementById("logContainer");
+const clearLogs = document.getElementById("clearLogs");
+
+//Theme toggling logic
 themeToggle.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
@@ -84,7 +95,7 @@ let deleteTask = (index) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
     let taskTitle = e.target[0].value;
     let taskDescription = e.target[1].value;
     let taskCategory = e.target[2].value;
@@ -116,3 +127,90 @@ form.addEventListener('submit', (e) => {
 });
 
 ui();
+
+
+//Browser rendering and event propagation logic.
+function addLog(message, className) {
+  const placeholder = logContainer.querySelector(".placeholder");
+
+  if (placeholder) {
+    placeholder.remove();
+  }
+
+  const log = document.createElement("div");
+  log.className = `log ${className}`;
+  log.textContent = message;
+
+  logContainer.appendChild(log);
+  logContainer.scrollTop = logContainer.scrollHeight;
+}
+
+function captureHandler(elementName) {
+  return () => {
+    addLog(
+      `Capturing: ${elementName}`,
+      "capture-phase"
+    );
+  };
+}
+
+function bubbleHandler(elementName) {
+  return () => {
+    addLog(
+      `Bubbling: ${elementName}`,
+      "bubble-phase"
+    );
+  };
+}
+
+
+grandparent.addEventListener(
+  "click",
+  captureHandler("Grandparent"),
+  true
+);
+
+parent.addEventListener(
+  "click",
+  captureHandler("Parent"),
+  true
+);
+
+child.addEventListener(
+  "click",
+  captureHandler("Child"),
+  true
+);
+
+button.addEventListener("click", () => {
+  addLog(
+    "Target: Button Clicked",
+    "target-phase"
+  );
+});
+
+child.addEventListener(
+  "click",
+  bubbleHandler("Child"),
+  false
+);
+
+parent.addEventListener(
+  "click",
+  bubbleHandler("Parent"),
+  false
+);
+
+grandparent.addEventListener(
+  "click",
+  bubbleHandler("Grandparent"),
+  false
+);
+
+clearLogs.addEventListener("click", () => {
+  logContainer.innerHTML = `
+    <div class="placeholder">
+      Click the button to see event propagation...
+    </div>
+  `;
+});
