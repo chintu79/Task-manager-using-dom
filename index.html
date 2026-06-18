@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Task Manager</title>
+</head>
+
+<body>
+    <nav>
+        <h1>Task Manager</h1>
+        <button id="add-task-btn">Add Task</button>
+        <button id="theme-toggle">🌙</button>
+    </nav>
+    <main>
+        <ul id="task-list">
+            <!-- tasks will be added here -->
+        </ul>
+    </main>
+
+    <section class="task-form-section hidden">
+        <div class="form-header">
+            <h2>Create Task</h2>
+            <span id="close-form">&times;</span>
+        </div>
+        <form id="task-form">
+            <input type="text" placeholder="Task Name" />
+            <textarea placeholder="Task Description"></textarea>
+            <select id="task-category">
+                <option value="" disabled selected>Select Category</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="health">Health</option>
+                <option value="finance">Finance</option>
+                <option value="education">Education</option>
+                <option value="other">Other</option>
+            </select>
+            <button type="submit">Create Task</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
